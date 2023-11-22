@@ -6,7 +6,6 @@ import { useNavigate, useSearchParams } from "react-router-dom"
 import { SearchWrapper, Input, Submit } from "./SearBar.style"
 
 export const SearchBar = () => {
-    const navigate = useNavigate();
     const [searchResult, setSearchResult] = useState([]);
     const [params, setParams] = useSearchParams();
 
