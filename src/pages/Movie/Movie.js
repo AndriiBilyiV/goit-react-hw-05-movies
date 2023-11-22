@@ -2,7 +2,7 @@ import { FetchCast, FetchMovie, FetchReviews } from "components/api";
 import { Cast } from "components/Cast/Cast";
 import { Review } from "components/Review/Review";
 import { useEffect, useState } from "react";
-import { Link, Outlet, Route, Routes, useLocation, useNavigate, useNavigation, useParams } from "react-router-dom"
+import { Link, Outlet, Route, Routes, useLocation, useParams } from "react-router-dom"
 import { AdditionalInfoWrapper, Button, MainWrapper, MovieWrapper } from "./Movie.styled";
 
 export const Movie = () => {
@@ -23,7 +23,7 @@ export const Movie = () => {
         setReviews(reviewsData);
     } 
   fetch()
-    }, [])
+    }, [params.id])
     const { poster_path, original_title, vote_average, overview, genres } = details;
     return (
         <MovieWrapper>
