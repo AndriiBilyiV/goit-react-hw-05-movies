@@ -2,7 +2,7 @@ import { FetchSearch } from "components/api";
 import { SearchList } from "components/SearchList/SearchList";
 import { Form, Formik } from "formik"
 import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import { SearchWrapper, Input, Submit } from "./SearBar.style"
 
 export const SearchBar = () => {
