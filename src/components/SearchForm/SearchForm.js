@@ -13,7 +13,7 @@ export const SearchForm = ({setData}) => {
             setData(result)
         } 
         fetch()
-    }, [params])
+    }, [params, setData])
     
     return (
           <Formik
