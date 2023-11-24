@@ -1,4 +1,4 @@
-import { FetchCast, FetchMovie, FetchReviews } from "components/api";
+import { FetchMovie } from "components/api";
 import { useEffect, useState } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom"
 import { AdditionalInfoWrapper, Button, MainWrapper, MovieWrapper } from "./Movie.styled";
