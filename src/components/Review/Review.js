@@ -1,10 +1,23 @@
-export const Review = ({data}) => {
+import { FetchReviews } from "components/api";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+export const Review = () => {
+    const [reviews, setReviews] = useState([]);
+    const params = useParams();
+    useEffect(() => {
+        const  fetch = async () => {
+            const reviewsData = await FetchReviews(params.id);
+            setReviews(reviewsData);
+            } 
+        fetch()
+    }, [params.id])
     return (
         <>
-            {data.length ?
+            {reviews.length ?
             (<ul>
                 {
-                    data.map((review) => {
+                    reviews.map((review) => {
                         return (
                             <li key={review.id}><h3>Author:{review.author}</h3><p>{review.content}</p></li>
                       )

@@ -1,29 +1,26 @@
 import { FetchCast, FetchMovie, FetchReviews } from "components/api";
-import { Cast } from "components/Cast/Cast";
-import { Review } from "components/Review/Review";
 import { useEffect, useState } from "react";
-import { Link, Outlet, Route, Routes, useLocation, useParams } from "react-router-dom"
+import { Link, Outlet, useLocation, useParams } from "react-router-dom"
 import { AdditionalInfoWrapper, Button, MainWrapper, MovieWrapper } from "./Movie.styled";
 
 export const Movie = () => {
     
     const params = useParams();
-    const [details, setDetails] = useState([]);
-    const [cast, setCast] = useState([]);
-    const [reviews, setReviews] = useState([]);
+    const [details, setDetails] = useState(null);
+
+
     const location = useLocation();
     
     useEffect(() => {
     const  fetch = async () => {
         const detailsData = await FetchMovie(params.id);
         setDetails(detailsData);
-        const castData = await FetchCast(params.id);
-        setCast(castData);
-        const reviewsData = await FetchReviews(params.id);
-        setReviews(reviewsData);
     } 
   fetch()
     }, [params.id])
+    if (!details) {
+        return
+    }
     const { poster_path, original_title, vote_average, overview, genres } = details;
     return (
         <MovieWrapper>
@@ -47,10 +44,6 @@ export const Movie = () => {
                     <li><Link to='cast' state={location}>Cast</Link></li>
                     <li><Link to='review' state={location}>Reviews</Link></li>
                 </ul>
-                <Routes>
-                    <Route path="cast" element={<Cast casts={cast} />} />
-                    <Route path="review" element={<Review data={reviews} />} />
-                </Routes>
                 <Outlet />
             </AdditionalInfoWrapper>
         </MovieWrapper>
