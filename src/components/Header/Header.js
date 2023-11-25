@@ -1,18 +1,18 @@
-import { NavLink, Outlet } from "react-router-dom";
-import { NavButton, StyledHeader } from "./Header.styled";
+import { NavLink, Outlet } from 'react-router-dom';
+import { NavButton, StyledHeader } from './Header.styled';
 
 export const Header = () => {
-    return (
-        <>
-        <StyledHeader>
-            <NavLink to='/'>
-                <NavButton>Home</NavButton>
-            </NavLink>
-            <NavLink to='/movies'>
-                <NavButton>Movies</NavButton>
-            </NavLink>
-        </StyledHeader>
-        <Outlet/>
-        </>
-    )
-}
+  return (
+    <>
+      <StyledHeader>
+        <NavLink to="/">
+          <NavButton>Home</NavButton>
+        </NavLink>
+        <NavLink to="/movies">
+          <NavButton>Movies</NavButton>
+        </NavLink>
+      </StyledHeader>
+      <Outlet />
+    </>
+  );
+};
