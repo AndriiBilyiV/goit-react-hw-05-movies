@@ -13,7 +13,8 @@ export default function Movie() {
   const [details, setDetails] = useState(null);
 
   const location = useLocation();
-
+  const defaultPosterUrl =
+    "https://w7.pngwing.com/pngs/116/765/png-transparent-clapperboard-computer-icons-film-movie-poster-angle-text-logo-thumbnail.png";
   useEffect(() => {
     const fetch = async () => {
       const detailsData = await FetchMovie(params.id);
@@ -34,7 +35,9 @@ export default function Movie() {
       <MainWrapper>
         <img
           src={
-            poster_path ? "https://image.tmdb.org/t/p/w300" + poster_path : null
+            poster_path
+              ? "https://image.tmdb.org/t/p/w300" + poster_path
+              : defaultPosterUrl
           }
           alt={original_title + " poster"}
         />
